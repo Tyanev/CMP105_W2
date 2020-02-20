@@ -1,7 +1,5 @@
 #include "Level.h"
 
-std::string Coord;
-
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	window = hwnd;

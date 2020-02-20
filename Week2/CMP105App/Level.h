@@ -31,4 +31,7 @@ private:
 	sf::Text mousePos;
 
 	sf::CircleShape m2Circle;
+
+	// Other variables
+	std::string Coord;
 };
