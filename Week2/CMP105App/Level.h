@@ -25,5 +25,10 @@ private:
 	Input* input;
 
 	// Add your object here
+	sf::RectangleShape rectR;
 
+	sf::Font font;
+	sf::Text mousePos;
+
+	sf::CircleShape m2Circle;
 };
