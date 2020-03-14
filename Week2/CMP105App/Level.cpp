@@ -10,8 +10,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	{
 		std::cout << "Error loading font\n";
 	}
-
-	Coord = "Mouse: X" + std::to_string(input->getMouseX()) + " Y" + std::to_string(input->getMouseY());
+	Coord = "Mouse: X" + std::to_string(mouseX) + " Y" + std::to_string(mouseY);
+	mouseTrack = 0;
 
 	mousePos.setFont(font);
 	mousePos.setString(Coord);
@@ -48,7 +48,27 @@ void Level::handleInput()
 
 	if (input->isKeyDown(sf::Keyboard::Escape))
 	{
-		window->~RenderWindow();
+		window->close();
+	}
+
+	if (input->isMouseLDown())
+	{
+		if (!mouseTrack); 
+		{
+			mouseXTemp = input->getMouseX(); mouseYTemp = input->getMouseY();
+			mouseTrack = true; 
+		}	
+	}
+	if (!input->isMouseLDown()) 
+	{
+		if (mouseTrack) 
+		{
+			float x = mouseX - mouseXTemp; 
+			float y = mouseY - mouseYTemp;
+			float calcLength = sqrt((x*x) + (y*y));
+			std::cout << "Length = " << calcLength << std::endl; 
+			mouseTrack = false; 
+		}
 	}
 
 	if (input->isMouseRDown())
@@ -61,7 +81,9 @@ void Level::handleInput()
 // Update game objects
 void Level::update()
 {
-	Coord = "Mouse: X" + std::to_string(input->getMouseX()) + " Y" + std::to_string(input->getMouseY());
+	mouseX = input->getMouseX();
+	mouseY = input->getMouseY();
+	Coord = "Mouse: X" + std::to_string(mouseX) + " Y" + std::to_string(mouseY);
 	mousePos.setString(Coord);
 }
 

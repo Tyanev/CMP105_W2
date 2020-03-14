@@ -4,7 +4,7 @@
 #include "Framework/Input.h"
 #include <string.h>
 #include <iostream>
-
+#include <math.h>
 
 class Level{
 public:
@@ -34,4 +34,7 @@ private:
 
 	// Other variables
 	std::string Coord;
+	float mouseX, mouseY, mouseXTemp, mouseYTemp;
+	bool mouseTrack;
+
 };
